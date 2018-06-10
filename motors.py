@@ -14,6 +14,8 @@ pinMotorABackwards = 10
 pinMotorBForwards = 7
 pinMotorBBackwards = 8
 
+pinOnOff = 23
+
 
 # Set the GPIO Pin mode
 GPIO.setup(pinMotorABackwards, GPIO.OUT)
@@ -22,6 +24,7 @@ GPIO.setup(pinMotorAForwards, GPIO.OUT)
 GPIO.setup(pinMotorBBackwards, GPIO.OUT)
 GPIO.setup(pinMotorBForwards, GPIO.OUT)
 
+GPIO.setup(pinOnOff, GPIO.IN)
 
 def forwardsA():
     GPIO.output(pinMotorAForwards, 1)
@@ -68,5 +71,26 @@ def right():
     backwardsB()
     forwardsA()    
 
+def isOn():
+    GPIO.input(pinOnOff)
+
+
+while True:            # this will carry on until you hit CTRL+C  
+    if GPIO.input(23): # if port 25 == 1  
+        print ("Port 24 is 1/HIGH/True - LED ON"         )
+    else:  
+        print ("Port 25 is 0/LOW/False - LED OFF"  )
+    time.sleep(1)         # wait 0.1 seconds  
 # Moving the robot
 
+##forwards()
+##time.sleep(1) # Pause for 1 second
+##left()
+##time.sleep(0.5) # Pause for half a second
+##forwards()
+##time.sleep(1)
+##right()
+##time.sleep(0.5)
+##backwards()
+##time.sleep(0.5)
+##stopmotors()
