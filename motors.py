@@ -75,22 +75,26 @@ def isOn():
     GPIO.input(pinOnOff)
 
 
+def moveRobot():
+    forwards()
+    time.sleep(1) # Pause for 1 second
+    left()
+    time.sleep(0.5) # Pause for half a second
+    forwards()
+    time.sleep(1)
+    right()
+    time.sleep(0.5)
+    backwards()
+    time.sleep(0.5)
+    
+    
+
 while True:            # this will carry on until you hit CTRL+C  
     if GPIO.input(23): # if port 25 == 1  
-        print ("Port 24 is 1/HIGH/True - LED ON"         )
+        print ("Running Motors")
+        moveRobot()
     else:  
-        print ("Port 25 is 0/LOW/False - LED OFF"  )
-    time.sleep(1)         # wait 0.1 seconds  
+        print ("Stop")
+        stopMotors()
+        time.sleep(1)
 # Moving the robot
-
-##forwards()
-##time.sleep(1) # Pause for 1 second
-##left()
-##time.sleep(0.5) # Pause for half a second
-##forwards()
-##time.sleep(1)
-##right()
-##time.sleep(0.5)
-##backwards()
-##time.sleep(0.5)
-##stopmotors()
